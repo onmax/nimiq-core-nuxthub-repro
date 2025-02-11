@@ -1,3 +1,6 @@
+import topLevelAwait from 'vite-plugin-top-level-await'
+import wasm from 'vite-plugin-wasm'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   // https://nuxt.com/modules
@@ -20,8 +23,31 @@ export default defineNuxtConfig({
   future: { compatibilityVersion: 4 },
   compatibilityDate: '2024-07-30',
 
+  nitro: {
+    experimental: { wasm: true },
+    wasm: { lazy: true, esmImport: true },
+
+  },
+
   // https://hub.nuxt.com/docs/getting-started/installation#options
   hub: {},
+
+  vite: {
+    plugins: [
+      wasm(),
+      topLevelAwait(),
+    ],
+    worker: {
+      plugins: () => [
+        wasm(),
+        topLevelAwait(),
+      ],
+    },
+
+    optimizeDeps: {
+      exclude: ['@nimiq/core'],
+    },
+  },
 
   // https://eslint.nuxt.com
   eslint: {
