@@ -28,8 +28,6 @@
 //   return new Response(key.toHex())
 // })
 
-import { PublicKey } from '@nimiq/core/web'
-
 export default defineEventHandler(async () => {
   if (import.meta.prod) {
     console.log('prod')
@@ -37,6 +35,7 @@ export default defineEventHandler(async () => {
     const { default: init } = await import('@nimiq/core/web')
     await init(mod)
   }
+  const { PublicKey } = await import('@nimiq/core/web')
   const publicKey = '82d80b86d9bf1906832e9f0ba4fa69018792f59190075c396b0e85aeac444e55'
   const key = PublicKey.fromHex(publicKey)
   return key.toHex()
