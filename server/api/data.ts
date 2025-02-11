@@ -19,7 +19,7 @@
 // Approach as seen in https://github.com/nimiq/core-rs-albatross/issues/3277#issuecomment-2646614887
 
 import init, { PublicKey } from '@nimiq/core/web'
-import mod from '@nimiq/core/web/main-wasm/index_bg.wasm'
+import mod from './nimiq.wasm'
 
 export default defineEventHandler(async () => {
   await init(mod)
