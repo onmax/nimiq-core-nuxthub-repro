@@ -25,7 +25,7 @@ export default defineNuxtConfig({
 
   nitro: {
     experimental: { wasm: true },
-    // wasm: { lazy: true, esmImport: true },
+    // wasm: { lazy: true },
   },
 
   // https://hub.nuxt.com/docs/getting-started/installation#options
