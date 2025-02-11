@@ -32,6 +32,7 @@ import { PublicKey } from '@nimiq/core'
 
 export default defineEventHandler(async () => {
   if (import.meta.prod) {
+    console.log('prod')
     const mod = await import('./nimiq.wasm?module' as string).then(m => m.default)
     const { default: init } = await import('@nimiq/core/web')
     await init(mod)
