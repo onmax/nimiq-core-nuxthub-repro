@@ -27,6 +27,13 @@ export default defineEventHandler(async () => {
   const key = PublicKey.fromHex(publicKey)
   return new Response(key.toHex())
 })
+//    GET 500 /
+//   (warn)
+// using deprecated parameters for the initialization function; pass a single object instead
+// [wasm] [error],TypeError: WebAssembly.instantiate(): Import #0 "wbg": module is not an object or function
+// Error: The script will never generate a response.
+
+// --------------
 
 // export default defineEventHandler(async () => {
 //   if (import.meta.prod) {
@@ -40,3 +47,4 @@ export default defineEventHandler(async () => {
 //   const key = PublicKey.fromHex(publicKey)
 //   return key.toHex()
 // })
+// --> [nuxt] [request error] [unhandled] [500],Cannot read properties of undefined (reading '__wbindgen_malloc')
