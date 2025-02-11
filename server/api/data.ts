@@ -28,7 +28,7 @@
 //   return new Response(key.toHex())
 // })
 
-import { PublicKey } from '@nimiq/core'
+import { PublicKey } from '@nimiq/core/web'
 
 export default defineEventHandler(async () => {
   if (import.meta.prod) {
