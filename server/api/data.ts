@@ -13,6 +13,7 @@
 //   const key = PublicKey.fromHex(publicKey)
 //   return key.toHex()
 // })
+// --> [nuxt] [request error] [unhandled] [500],WebAssembly.instantiate(): Import #0 "wbg": module is not an object or function
 
 // ------------------
 
@@ -32,6 +33,7 @@ export default defineEventHandler(async () => {
 // using deprecated parameters for the initialization function; pass a single object instead
 // [wasm] [error],TypeError: WebAssembly.instantiate(): Import #0 "wbg": module is not an object or function
 // Error: The script will never generate a response.
+// https://github.com/rustwasm/wasm-bindgen
 
 // --------------
 

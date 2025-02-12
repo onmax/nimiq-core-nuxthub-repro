@@ -1,3 +1,4 @@
+import { copyFileSync } from 'fs'
 import topLevelAwait from 'vite-plugin-top-level-await'
 import wasm from 'vite-plugin-wasm'
 
@@ -45,6 +46,16 @@ export default defineNuxtConfig({
 
     optimizeDeps: {
       exclude: ['@nimiq/core'],
+    },
+  },
+
+  hooks: {
+    'build:before': () => {
+      // Copy server WASM file into codebase to use with @rollup/plugin-wasm
+      // Should not be necessary, but for unknown reasons I am getting an `Unknown file extension ".wasm"` error
+      // when importing from node_modules directly.
+      copyFileSync('node_modules/@nimiq/core/web/main-wasm/index_bg.wasm', './server/api/nimiq.wasm')
+      console.log('✔ Copied server WASM to codebase')
     },
   },
 
